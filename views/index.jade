@@ -1,0 +1,35 @@
+doctype html
+html(lang="ru-Ru")
+	head
+		title Импорт проекта
+		meta(charset="utf-8")/
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")/
+		meta(http-equiv="Reply-to" content="con29rus@live.ru")/
+		meta(http-equiv="Reply-to" content="con29rus@icloud.com")/
+		meta(http-equiv="Reply-to" content="con29rus@gmail.com")/
+		link(rel="stylesheet" href="/css/style.css")/
+	body
+		input(type="radio" name="showContent" id="repoContent" checked)/
+		input(type="radio" name="showContent" id="hostsContent")/
+		input(type="radio" name="showContent" id="runContent")/
+		ul.menu
+			li
+				label(for="repoContent") Репозитории
+			li
+				label(for="hostsContent") Хосты
+			li
+				label(for="runContent") Планировщик
+		div.content.repoContent
+			div.insertRepo
+				form(method="POST")
+					input(type="text" name="repoName" placeholder="Название репозитория + ENTER")/
+			form(method="POST" id="pullForm")
+			h2 Доступные:
+			form(method="POST")
+				ul.repoList
+					each val in repoList
+						li
+							input(type="checkbox" id="check_"+val name="selected[]" value=val)/
+							label(for="check_"+val)=val
+							input(type="submit" form="pullForm" name="pull" value=val)/
+				input.deleteButton(type="submit" name="delete" value="Удалить выбранное")/
