@@ -1,5 +1,9 @@
 process.chdir(__dirname);
 process.env.LANG='en_US.UTF-8';
+if(process.argv.indexOf('-d')!=-1){
+	require('child_process').fork('bin/www',[],{cwd:__dirname,silent:true});
+	process.exit(1);
+}
 
 var express = require('express');
 var path = require('path');
