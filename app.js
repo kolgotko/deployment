@@ -1,4 +1,5 @@
 process.chdir(__dirname);
+process.env.LANG='en_US.UTF-8';
 
 var express = require('express');
 var path = require('path');
