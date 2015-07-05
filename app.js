@@ -1,14 +1,4 @@
-process.chdir(__dirname);
-process.env.LANG='en_US.UTF-8';
-if(process.argv.indexOf('-d')!=-1){
-	try{
-		var spawn=require('child_process').spawn('bin/www',[],{cwd:__dirname,stdio:'ignore',detached:true});
-		console.log(spawn.pid);
-		process.exit(0);
-	}
-	catch(e){console.log(e);}
-}
-
+var config = require('config');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -18,13 +8,6 @@ var bodyParser = require('body-parser');
 
 var fs = require('fs');
 var repo = require('Repo');
-
-fs.readFile('config.json',function(err,data){
-	var config = JSON.parse(data);
-	repo.__proto__=config;
-	config.group && process.setgid(config.group);
-	config.user && process.setuid(config.user);
-})
 
 var routes = require('./routes/index');
 var app = express();
