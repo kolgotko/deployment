@@ -1,8 +1,12 @@
 process.chdir(__dirname);
 process.env.LANG='en_US.UTF-8';
 if(process.argv.indexOf('-d')!=-1){
-	require('child_process').fork('bin/www',[],{cwd:__dirname,silent:true});
-	process.exit(1);
+	try{
+		var spawn=require('child_process').spawn('bin/www',[],{cwd:__dirname,stdio:'ignore',detached:true});
+		console.log(spawn.pid);
+		process.exit(0);
+	}
+	catch(e){console.log(e);}
 }
 
 var express = require('express');
