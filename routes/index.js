@@ -25,7 +25,7 @@ router.post('/',function(req,resp,next){
 router.post('/',function(req,resp,next){
 	req.body.pull && repo.pull(req.body.pull);
 	next();
-})
+});
 
 router.use('/',function(req,res,next){
 	res.render('index',{repoList:repo.getLocalRepos()});
