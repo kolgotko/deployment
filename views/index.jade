@@ -24,6 +24,11 @@ html(lang="ru-Ru")
 				form(method="POST")
 					input(type="text" name="repoName" placeholder="Название репозитория + ENTER")/
 			form(method="POST" id="pullForm")
+			if log
+				div.log
+					pre
+						each val in log
+							span=val
 			h2 Доступные:
 			form(method="POST")
 				ul.repoList

@@ -104,6 +104,14 @@ img{
 	min-width: 800px;
 	margin: 20px auto;
 }
+.log{
+	width: 50%;
+	min-width: 800px;
+	color: #3E4452;
+	margin: 0px auto;
+}
+.log pre{}
+.log pre span{}
 .repoList{
 	margin: 0px auto;
 	padding: 0px;

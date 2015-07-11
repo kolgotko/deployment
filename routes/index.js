@@ -14,7 +14,6 @@ router.post('/',function(req,res,next){
 });
 
 router.post('/',function(req,resp,next){
-	console.log(req.body);
 	if(req.body.delete && req.body.selected){
 		for(i=0;i!=req.body.selected.length;i++)
 		execSync('rm -dfR '+repo.repoPath+req.body.selected[i]);
@@ -28,7 +27,7 @@ router.post('/',function(req,resp,next){
 });
 
 router.use('/',function(req,res,next){
-	res.render('index',{repoList:repo.getLocalRepos()});
+	res.render('index',{repoList:repo.getLocalRepos(),log:repo.getLog()});
 });
 
 module.exports = router;
