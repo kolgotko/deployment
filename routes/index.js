@@ -56,7 +56,6 @@ router.post('/',function(req,resp,next){
 });
 
 router.use('/',function(req,res,next){
-	console.log(active);
 	res.render('index',{repoList:repo.getLocalRepos(),log:repo.getLog(),cronList:cron.get(),active:active});
 });
 
