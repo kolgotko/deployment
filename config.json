@@ -2,7 +2,7 @@
 	"user":"root",
 	"group":"wheel",
 	"umask":"0022",
-	"repoPath":"../../sites/",
+	"repoPath":"../sites/",
 	"remoteUser":"develop",
 	"remoteAddr":"192.168.0.1",
 	"pushToBack":true
