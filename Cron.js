@@ -7,7 +7,7 @@ var Cron=new function(){
 	this.get=function(){
 		try{var stdout=execSync('crontab -l');}
 		catch(e){
-			// addNew('');
+			addNew('');
 			var stdout=execSync('crontab -l');
 		}
 		stdout=stdout.toString();
