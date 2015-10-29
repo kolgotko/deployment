@@ -9,9 +9,19 @@ html(lang="ru-Ru")
 		meta(http-equiv="Reply-to" content="con29rus@gmail.com")/
 		link(rel="stylesheet" href="/css/style.css")/
 	body
-		input(type="radio" name="showContent" id="repoContent" checked)/
-		input(type="radio" name="showContent" id="hostsContent")/
-		input(type="radio" name="showContent" id="runContent")/
+		case active
+			when 'repoContent'
+				input(type="radio" name="showContent" id="repoContent" checked)/
+				input(type="radio" name="showContent" id="hostsContent")/
+				input(type="radio" name="showContent" id="runContent")/
+			when 'runContent'
+				input(type="radio" name="showContent" id="repoContent")/
+				input(type="radio" name="showContent" id="hostsContent")/
+				input(type="radio" name="showContent" id="runContent" checked)/
+			default
+				input(type="radio" name="showContent" id="repoContent" checked)/
+				input(type="radio" name="showContent" id="hostsContent")/
+				input(type="radio" name="showContent" id="runContent")/
 		ul.menu
 			li
 				label(for="repoContent") Репозитории
@@ -38,3 +48,27 @@ html(lang="ru-Ru")
 							label(for="check_"+val)=val
 							input(type="submit" form="pullForm" name="pull" value=val)/
 				input.deleteButton(type="submit" name="delete" value="Удалить выбранное")/
+		div.content.runContent
+			div.insertRun
+				form(method="POST")
+					input(type="text" name="runMinutes" placeholder="Минуты")/
+					input(type="text" name="runHours" placeholder="Часы")/
+					input(type="text" name="runDays" placeholder="Дни")/
+					input(type="text" name="runMounths" placeholder="Месяцы")/
+					input(type="text" name="runDayli" placeholder="Дни недели")/
+					input(type="text" name="runCommand" class="runCommand" placeholder="Команда")/
+					input(type="submit" name="runAdd" value="Добавить задание")/
+			h2 Существующие задания:
+			form(method="POST")
+				div.cronList
+					each val, index in cronList
+						div.line
+							input(type="checkbox" id="check_val_"+index name="selected_crons[]" value=index)/
+							label(for="check_val_"+index)
+								div.inline=val.minutes
+								div.inline=val.hours
+								div.inline=val.day
+								div.inline=val.mounth
+								div.inline=val.dayli
+								div.inline=val.command
+				input.deleteButton(type="submit" name="delete_cron" value="Удалить выбранное")/
